@@ -32,4 +32,15 @@ return array(
         'lifetime'     => 1209600,
         'ignore_errors' => false,
     ),
+    'steam' => array(
+        'driver' => 'steam',
+        'api_key' => '',
+        'domain_name' => 'my-host.example.org',
+        'callback_url' => URL::site('steam/callback', true),
+        'login_redirect_url' => URL::site('/', true),
+        'logout_redirect_url' => URL::site('/', true),
+        'session_key' => 'oauth_user',
+        'session_type' => Session::$default,
+        'lifetime'     => 0,
+    ),
 );

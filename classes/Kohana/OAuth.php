@@ -129,7 +129,7 @@ abstract class Kohana_OAuth
     abstract public function login_url();
     
     abstract public function logout_url();
-    
+
     abstract public function logout();
 }
 
