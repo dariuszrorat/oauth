@@ -32,7 +32,7 @@ class Kohana_OAuth_Facebook extends OAuth
         {
             $helper = $this->_fb->getRedirectLoginHelper();
             $accessToken = $helper->getAccessToken();
-            return $accessToken->getValue();
+            return $accessToken ? $accessToken->getValue() : NULL;
         } catch (Facebook\Exceptions\FacebookResponseException $e)
         {
             if ($this->_ignore_errors === true)
