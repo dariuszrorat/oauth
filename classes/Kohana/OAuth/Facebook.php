@@ -22,7 +22,11 @@ class Kohana_OAuth_Facebook extends OAuth
             'app_id' => $config['app_id'],
             'app_secret' => $config['app_secret'],
             'default_graph_version' => $config['default_graph_version'],
-            'persistent_data_handler' => $config['persistent_data_handler']
+            'enable_beta_mode' => $config['enable_beta_mode'],
+            'http_client_handler' => $config['http_client_handler'],
+            'persistent_data_handler' => $config['persistent_data_handler'],
+            'pseudo_random_string_generator' => $config['pseudo_random_string_generator'],
+            'url_detection_handler' => $config['url_detection_handler']
         ));
     }
 
