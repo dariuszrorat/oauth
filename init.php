@@ -2,9 +2,8 @@
 
 Route::set('facebook/callback', 'facebook/callback')
 ->defaults(array(
-	'directory' => 'facebook',
-	'controller' => 'callback',
-	'action' => 'index'
+	'controller' => 'facebook',
+	'action' => 'callback'
 ));
 
 /**
@@ -13,7 +12,6 @@ Route::set('facebook/callback', 'facebook/callback')
 
 Route::set('steam/callback', 'steam/callback')
 ->defaults(array(
-	'directory' => 'steam',
-	'controller' => 'callback',
-	'action' => 'index'
+	'controller' => 'steam',
+	'action' => 'callback'
 ));
