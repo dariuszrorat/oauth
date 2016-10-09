@@ -1,5 +1,9 @@
 <?php
 
+defined('SYSPATH') OR die('No direct access allowed.');
+
+include Kohana::find_file('vendor', 'Facebook/autoload');
+
 class Kohana_OAuth_Facebook extends OAuth
 {
     protected $_ignore_errors = false;
@@ -9,7 +13,6 @@ class Kohana_OAuth_Facebook extends OAuth
         parent::__construct($config);
         $this->_ignore_errors = $config['ignore_errors'];
 
-        include Kohana::find_file('vendor', 'Facebook/autoload');
         // Only for Facebook SDK
         if (!session_id())
         {
