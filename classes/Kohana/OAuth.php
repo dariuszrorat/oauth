@@ -15,6 +15,8 @@ abstract class Kohana_OAuth
     protected $_session_type = 'native';
     protected $_session_key = 'oauth_user';    
     protected $_session;
+
+    protected $_client;
     
     /**
      * Singleton pattern

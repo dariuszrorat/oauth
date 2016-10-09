@@ -6,7 +6,6 @@ include Kohana::find_file('vendor', 'steamauth/openid');
 
 class Kohana_OAuth_Steam extends OAuth
 {
-    protected $_client;
 
     public function __construct(array $config)
     {

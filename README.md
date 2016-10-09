@@ -2,6 +2,8 @@
 
 This module is used to perform Facebook and Steam authentication.
 
+WARNING: The steam driver is not tested yet.
+
 ## Requirements
 
 You must install Facebook SDK on vendor directory to auth with Facebook.

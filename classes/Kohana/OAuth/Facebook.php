@@ -2,9 +2,7 @@
 
 class Kohana_OAuth_Facebook extends OAuth
 {
-
-    private $_fb;
-    private $_ignore_errors = false;
+    protected $_ignore_errors = false;
 
     public function __construct(array $config)
     {
@@ -18,7 +16,7 @@ class Kohana_OAuth_Facebook extends OAuth
             session_start();
         }
 
-        $this->_fb = new Facebook\Facebook(array(
+        $this->_client = new Facebook\Facebook(array(
             'app_id' => $config['app_id'],
             'app_secret' => $config['app_secret'],
             'default_graph_version' => $config['default_graph_version'],
@@ -34,7 +32,7 @@ class Kohana_OAuth_Facebook extends OAuth
     {
         try
         {
-            $helper = $this->_fb->getRedirectLoginHelper();
+            $helper = $this->_client->getRedirectLoginHelper();
             $accessToken = $helper->getAccessToken();
             return $accessToken ? $accessToken->getValue() : NULL;
         } catch (Facebook\Exceptions\FacebookResponseException $e)
@@ -68,7 +66,7 @@ class Kohana_OAuth_Facebook extends OAuth
                 $access_token = $this->access_token();
                 if ($access_token !== NULL)
                 {
-                    $response = $this->_fb->get('/me?fields=' . $this->_config['fields'], $access_token);
+                    $response = $this->_client->get('/me?fields=' . $this->_config['fields'], $access_token);
                     $body = $response->getBody();
                     $user = json_decode($body);
                     $this->_session->set($this->_session_key, $user);
@@ -96,7 +94,7 @@ class Kohana_OAuth_Facebook extends OAuth
     {
         try
         {
-            $helper = $this->_fb->getRedirectLoginHelper();
+            $helper = $this->_client->getRedirectLoginHelper();
             $permissions = $this->_config['permissions'];
             return $helper->getLoginUrl($this->_config['callback_url'], $permissions);
         } catch (Facebook\Exceptions\FacebookResponseException $e)
@@ -122,7 +120,7 @@ class Kohana_OAuth_Facebook extends OAuth
         {
             $access_token = $this->access_token();
             $next = $this->_config['logout_redirect_url'];
-            $helper = $this->_fb->getRedirectLoginHelper();
+            $helper = $this->_client->getRedirectLoginHelper();
             return $helper->getLogoutUrl($access_token, $next);
         } catch (Facebook\Exceptions\FacebookResponseException $e)
         {
