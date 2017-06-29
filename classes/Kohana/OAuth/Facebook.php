@@ -69,7 +69,8 @@ class Kohana_OAuth_Facebook extends OAuth
                 $access_token = $this->access_token();
                 if ($access_token !== NULL)
                 {
-                    $response = $this->_client->get('/me?fields=' . $this->_config['fields'], $access_token);
+                    $fields = $this->_config['fields'];
+                    $response = $this->_client->get('/me?fields=' . $fields, $access_token);
                     $body = $response->getBody();
                     $user = json_decode($body);
                     $this->_session->set($this->_session_key, $user);
